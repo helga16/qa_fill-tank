@@ -41,31 +41,31 @@ describe('fillTank', () => {
 
   it('should fill the fuel if the client can pay for it', () => {
     const customer = {
-      money: 375, // customer account balance
+      money: 200, // customer account balance
       vehicle: {
         maxTankCapacity: 30, // fuel tank volume
         fuelRemains: 5, // Remaining fuel in the tank
       },
     };
 
-    fillTank(customer, 25, 20);
+    fillTank(customer, 20, 20);
 
     expect(customer.money).toBe(0);
-    expect(customer.vehicle.fuelRemains).toBe(20);
+    expect(customer.vehicle.fuelRemains).toBe(15);
   });
 
   it('should round the amount by discarding number to the tenth part.', () => {
     const customer = {
-      money: 375, // customer account balance
+      money: 600, // customer account balance
       vehicle: {
         maxTankCapacity: 50, // fuel tank volume
         fuelRemains: 5, // Remaining fuel in the tank
       },
     };
 
-    fillTank(customer, 23, 10.9);
+    fillTank(customer, 9, 10.239);
 
-    expect(customer.vehicle.fuelRemains).toBe(15.9);
+    expect(customer.vehicle.fuelRemains).toBe(15.2);
   });
 
   it('should not pour at all if the amount is less than 2 liters', () => {
@@ -92,9 +92,9 @@ describe('fillTank', () => {
       },
     };
 
-    fillTank(customer, 36, 23);
+    fillTank(customer, 36.45, 23);
 
-    expect(customer.money).toBe(100);
+    expect(customer.money).toBe(89.65);
     expect(customer.vehicle.fuelRemains).toBe(28);
   });
 });
