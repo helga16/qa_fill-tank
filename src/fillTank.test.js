@@ -1,7 +1,7 @@
 'use strict';
 
 describe('fillTank', () => {
-   const { fillTank } = require('./fillTank');
+  const { fillTank } = require('./fillTank');
 
   it('should be declared ', () => {
     expect(fillTank).toBeInstanceOf(Function);
@@ -22,20 +22,22 @@ describe('fillTank', () => {
     expect(customer.vehicle.fuelRemains).toBe(40);
   });
 
-  it('should calculate full tank If the amount is greater than the tank can accommodate', () => {
-    const customer = {
-      money: 3000, // customer account balance
-      vehicle: {
-        maxTankCapacity: 20, // fuel tank volume
-        fuelRemains: 5, // Remaining fuel in the tank
-      },
-    };
+  it(
+    'should calculate full tank If the amount is greater than the tank can use',
+    () => {
+      const customer = {
+        money: 3000, // customer account balance
+        vehicle: {
+          maxTankCapacity: 20, // fuel tank volume
+          fuelRemains: 5, // Remaining fuel in the tank
+        },
+      };
 
-    fillTank(customer, 50, 20);
+      fillTank(customer, 50, 20);
 
-    expect(customer.money).toBe(2250);
-    expect(customer.vehicle.fuelRemains).toBe(20);
-  });
+      expect(customer.money).toBe(2250);
+      expect(customer.vehicle.fuelRemains).toBe(20);
+    });
 
   it('should fill the fuel if the client can pay for it', () => {
     const customer = {
@@ -52,7 +54,7 @@ describe('fillTank', () => {
     expect(customer.vehicle.fuelRemains).toBe(20);
   });
 
-  it('should round the poured amount by discarding number to the tenth part.', () => {
+  it('should round the amount by discarding number to the tenth part.', () => {
     const customer = {
       money: 375, // customer account balance
       vehicle: {
@@ -66,7 +68,7 @@ describe('fillTank', () => {
     expect(customer.vehicle.fuelRemains).toBe(15.9);
   });
 
-  it('should not pour at all if the poured amount is less than 2 liters', () => {
+  it('should not pour at all if the amount is less than 2 liters', () => {
     const customer = {
       money: 375, // customer account balance
       vehicle: {
@@ -81,7 +83,7 @@ describe('fillTank', () => {
     expect(customer.vehicle.fuelRemains).toBe(5);
   });
 
-  it('should round the price of the purchased fuel the to the nearest hundredth part', () => {
+  it('should round the price of fuel the to the nearest hundredth part', () => {
     const customer = {
       money: 928, // customer account balance
       vehicle: {
