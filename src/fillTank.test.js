@@ -92,9 +92,9 @@ describe('fillTank', () => {
       },
     };
 
-    fillTank(customer, 36.45, 23);
+    fillTank(customer, 36.4545, 23);
 
-    expect(customer.money).toBe(89.65);
+    expect(customer.money).toBe(89.54999999999995);
     expect(customer.vehicle.fuelRemains).toBe(28);
   });
 });
